@@ -8,11 +8,11 @@ namespace lab_zad4
     {
         private bool dach_otwarty;
 
-        public Kabriolet(string marka, int poj_baku, int predkosc_max, double zuzycie_paliwa, bool dach_otwarty):base(marka,poj_baku,predkosc_max,zuzycie_paliwa)
+        public Kabriolet(string marka, int poj_baku, int predkosc_max, double zuzycie_paliwa):base(marka,poj_baku,predkosc_max,zuzycie_paliwa)
         {
             this.dach_otwarty = false;
         }
-        void otworz_dach()
+      public void otworz_dach()
         {
             if(dach_otwarty != true)
             {
@@ -22,7 +22,7 @@ namespace lab_zad4
             
         }
 
-        void zamknij_dach()
+        public void zamknij_dach()
         {
             if (dach_otwarty != false)
             {
@@ -34,6 +34,14 @@ namespace lab_zad4
         public new void jedz(float jakSzybko, float jakDaleko)
         {
             double zasiegNaBaku = (Poj_baku / Zuzycie_paliwa) * 100;
+            Console.WriteLine(dach_otwarty);
+
+            if (dach_otwarty == true)
+            {
+                zasiegNaBaku = zasiegNaBaku - zasiegNaBaku * 0.15;
+            }
+            Console.WriteLine(zasiegNaBaku);
+
             double iloscTankowan = jakDaleko / zasiegNaBaku;
             double predkoscMax = Predkosc_max;
             if (jakSzybko < Predkosc_max)
